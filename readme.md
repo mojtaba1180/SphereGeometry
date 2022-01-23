@@ -4,7 +4,7 @@ Courtesy of Bruno Simon of https://threejs-journey.xyz/
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
-
+![](./images/Images.png)
 ``` bash
 # Install dependencies (only the first time)
 npm install
