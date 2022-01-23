@@ -8,7 +8,8 @@ const TextureLoader = new THREE.TextureLoader()
 
 const normalMapTextTure = TextureLoader.load('/textture/NormalMap.png')
 // Debug
-const gui = new dat.GUI()
+
+// const gui = new dat.GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -46,9 +47,9 @@ pointLight2.position.set(15.7, -13.4, -26.2)
 pointLight2.intensity = 1
 scene.add(pointLight2)
 
-gui.add(pointLight2.position, 'y')
-gui.add(pointLight2.position, 'x')
-gui.add(pointLight2.position, 'z')
+// gui.add(pointLight2.position, 'y')
+// gui.add(pointLight2.position, 'x')
+// gui.add(pointLight2.position, 'z')
 
 const pointLight3 = new THREE.PointLight(0xff0000, 0.3)
 pointLight3.position.set(-13.4, 15.7, -26.2)
