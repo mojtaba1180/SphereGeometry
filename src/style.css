@@ -1,0 +1,22 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    height: 100vh;
+    font-family: 'Poppins';
+    background: rgb(20,0,0);
+    background: linear-gradient(163deg, rgba(20,0,0,1) 0%, rgba(0,0,0,1) 53%, rgba(0,38,42,1) 100%);
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
