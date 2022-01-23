@@ -3,10 +3,18 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 
+
+
+// coursor 
+
+var cursor = document.getElementById("cursor");
+
+
 // loading 
 const TextureLoader = new THREE.TextureLoader()
 
 const normalMapTextTure = TextureLoader.load('/textture/NormalMap.png')
+const normalMapTextTure2 = TextureLoader.load('/textture/NormalMap2.png')
 // Debug
 
 // const gui = new dat.GUI()
@@ -18,7 +26,7 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Objects
-const geometry = new THREE.TorusGeometry(.6, .2, 126, 10);
+const geometry = new THREE.TorusGeometry(2, .1, 64, 64);
 const sphereGm = new THREE.SphereBufferGeometry(.7, 64, 64)
 // Materials
 
@@ -28,34 +36,35 @@ material.roughness = .2;
 material.normalMap = normalMapTextTure;
 material.color = new THREE.Color(0xFFffff)
 
+const material2 = new THREE.MeshStandardMaterial()
+material2.metalness = .7;
+material2.roughness = .2;
+material2.normalMap = normalMapTextTure2;
+material2.color = new THREE.Color(0xFFffff)
+
 // Mesh
 const sphere = new THREE.Mesh(sphereGm, material)
 scene.add(sphere)
 
-// const sphere2 = new THREE.Mesh(geometry, material)
-// scene.add(sphere2)
+const sphere2 = new THREE.Mesh(geometry, material2)
+scene.add(sphere2)
 
 // Lights
 
-const pointLight = new THREE.PointLight(0xffffff, 0.1)
-pointLight.position.x = 2
-pointLight.position.y = 3
-pointLight.position.z = 4
+const pointLight = new THREE.PointLight(0xffffff, 0.5)
+
 scene.add(pointLight)
-const pointLight2 = new THREE.PointLight(0x880af, 0.3)
+const pointLight2 = new THREE.PointLight(0xa80ff, 0.3)
 pointLight2.position.set(15.7, -13.4, -26.2)
 pointLight2.intensity = 1
 scene.add(pointLight2)
-
-// gui.add(pointLight2.position, 'y')
-// gui.add(pointLight2.position, 'x')
-// gui.add(pointLight2.position, 'z')
-
 const pointLight3 = new THREE.PointLight(0xff0000, 0.3)
 pointLight3.position.set(-13.4, 15.7, -26.2)
-
 scene.add(pointLight3)
 
+// const pointLight4 = new THREE.PointLight(0x00ff00, 0.3)
+// pointLight4.position.set(3.4, 15.7, -26.2)
+// scene.add(pointLight4)
 
 /**
  * Sizes
@@ -110,8 +119,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  */
 
 document.addEventListener('mousemove', movinegfuntion)
-let mouseX = 0
-let mouseY = 0
+let mouseX = 12
+let mouseY = 120
 
 let targetX = 0
 let targetY = 0
@@ -122,7 +131,9 @@ const windowY = window.innerHeight / 2;
 function movinegfuntion(e) {
     mouseX = (e.clientX - windowX)
     mouseY = (e.clientY - windowY)
-    mouseY = (e.clientY - windowY)
+    console.log
+    cursor.style.left = `${e.clientX}px`,
+        cursor.style.top = `${e.clientY}px`;
 }
 const clock = new THREE.Clock()
 
@@ -133,13 +144,18 @@ const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
-    // sphere.rotation.y = .8 * elapsedTime
     sphere.rotation.y = .8 * elapsedTime
+    sphere2.rotation.z = .3 * elapsedTime
+    sphere2.rotation.x = 4.5
+    sphere2.rotation.y = .06 * elapsedTime
+    // sphere.rotation.y = .8 * elapsedTime
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
     sphere.rotation.x += .5 * (targetY - sphere.rotation.x)
+    sphere.castShadow = true;
+    pointLight.position.set(mouseX, mouseY * -1, 4)
 
-    // Update Orbital Controls
-    // controls.update()
+    // console.log(targetY )
+
 
     // Render
     renderer.render(scene, camera)
@@ -147,5 +163,6 @@ const tick = () => {
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
+
 
 tick()
