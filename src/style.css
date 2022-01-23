@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
 *
 {
     margin: 0;
     padding: 0;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 html,
@@ -15,6 +17,35 @@ body
 }
 body{
     height: 200vh;
+}
+
+.header{
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 90px;
+    z-index: 99999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    background-color: #0002;
+    border-bottom: 1px solid #ccc1;
+    padding: auto 2rem;
+}
+.header .header-right-section
+{
+    width: 40vw;
+}
+.header .header-right-section ul{
+    width: 100%;
+    display: flex;
+    gap: 3;
+    justify-content: space-around;
+    align-items: center;
+}
+.header .header-right-section ul li{
+    list-style: none;
 }
 .webgl
 {
@@ -62,5 +93,4 @@ h1{
     height: 30px;
     width: 30px;
     overflow: hidden;
-    /* transition: all .02s ease-in-out; */
   }
