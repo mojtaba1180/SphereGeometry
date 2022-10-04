@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap);
 *
 {
     margin: 0;
@@ -54,7 +54,7 @@ body{
     left: 0;
     z-index: 3;
     outline: none;
-    mix-blend-mode:lighten ;
+    mix-blend-mode:color-dodge ;
 }
 .webg-box{
     background: linear-gradient(163deg, rgba(20,0,0,1) 0%, rgba(14,14,20,.9) 53%, rgba(0,38,42,1) 100%);
@@ -94,3 +94,5 @@ h1{
     width: 30px;
     overflow: hidden;
   }
+
+/*# sourceMappingURL=main.css.map*/
